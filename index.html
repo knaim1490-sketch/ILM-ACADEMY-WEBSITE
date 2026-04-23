@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>ILM Academy • Premium Home Tutoring</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: #FFFEF9;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FFFEF9;
+      color: #2C2C2C;
+      line-height: 1.5;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Custom cursor for desktop */
+    .custom-cursor {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      background: #D4A017;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      mix-blend-mode: difference;
+      transform: translate(-50%, -50%);
+      transition: transform 0.06s ease-out;
+      display: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      body {
+        cursor: none;
+      }
+      .custom-cursor {
+        display: block;
+      }
+    }
+
+    /* Subtle grain overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9998;
+      mix-blend-mode: multiply;
+      opacity: 0.35;
+    }
+
+    /* Page Loader */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      background: #FFFEF9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100000;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+      border-bottom: 3px solid #E8B830;
+    }
+    .page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loader-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      color: #B8860B;
+      letter-spacing: 6px;
+      animation: fadeGold 0.9s ease;
+    }
+    @keyframes fadeGold {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* NAVIGATION - Clean, perfectly aligned */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 254, 249, 0.8);
+      backdrop-filter: blur(16px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.9rem 1.5rem;
+      z-index: 1000;
+      transition: all 0.4s ease;
+      border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+    }
+    .navbar.scrolled {
+      background: rgba(255, 254, 249, 0.96);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 5vw, 2.2rem);
+      color: #2C2C2C;
+      letter-spacing: 2px;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .logo-line {
+      width: 38px;
+      height: 3px;
+      background: #D4A017;
+      margin-top: 4px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #FFFEF9 0%, #FEF9E7 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 7rem 1.5rem 3rem;
+    }
+    .yellow-orb {
+      position: absolute;
+      width: 80vw;
+      height: 80vw;
+      max-width: 520px;
+      max-height: 520px;
+      background: #F5D34A;
+      filter: blur(140px);
+      opacity: 0.22;
+      border-radius: 50%;
+      top: 28%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: slowOrb 22s infinite alternate;
+    }
+    @keyframes slowOrb {
+      0% { transform: translate(-50%, -50%) scale(1); }
+      100% { transform: translate(-50%, -50%) scale(1.2); }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 100%;
+      width: 100%;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(212,160,23,0.08);
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(212,160,23,0.4);
+      color: #B8860B;
+      font-weight: 600;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      color: #2C2C2C;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      word-break: break-word;
+    }
+    .hero h1 .gold-accent {
+      color: #B8860B;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 3.5vw, 1.25rem);
+      color: #5A5A5A;
+      margin: 1rem 0 2rem;
+      font-weight: 400;
+      padding: 0 0.5rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 0.5rem;
+    }
+    .btn-primary, .btn-outline {
+      padding: 0.85rem 1.8rem;
+      border-radius: 45px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.4px;
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+    }
+    .btn-primary {
+      background: #D4A017;
+      color: white;
+      box-shadow: 0 14px 26px rgba(212,160,23,0.35);
+      border: none;
+    }
+    .btn-outline {
+      border: 2px solid #B8860B;
+      color: #B8860B;
+      background: transparent;
+    }
+    .btn-primary:hover, .btn-outline:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 32px rgba(0,0,0,0.1);
+    }
+
+    /* MARQUEE */
+    .marquee-section {
+      background: #D4A017;
+      padding: 0.8rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+      font-weight: 700;
+      color: #FFFEF9;
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      letter-spacing: 1px;
+    }
+    .marquee-content span {
+      margin: 0 1.2rem;
+    }
+    .marquee-section:hover .marquee-content {
+      animation-play-state: paused;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 4rem 1.5rem;
+    }
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      color: #2C2C2C;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .gold-divider {
+      width: 60px;
+      height: 3px;
+      background: #D4A017;
+      margin: 0.5rem auto 2.5rem;
+    }
+
+    /* WHY ILM GRID */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+    .why-card {
+      background: white;
+      border-radius: 18px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+      border: 1px solid rgba(212,160,23,0.12);
+      transition: all 0.25s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .why-card:hover {
+      border-left: 4px solid #D4A017;
+      transform: translateY(-5px);
+      box-shadow: 0 18px 28px rgba(0,0,0,0.06);
+    }
+    .gold-highlight {
+      border: 2px solid #D4A017;
+      background: #FFFDF5;
+    }
+    .why-icon {
+      color: #B8860B;
+      width: 28px;
+      height: 28px;
+    }
+    .why-card h3 {
+      font-weight: 600;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+    }
+
+    /* RESULTS WALL */
+    .results-section {
+      background: #FFFEF9;
+      padding: 4rem 1rem;
+    }
+    .results-grid {
+      display: flex;
+      gap: 1.2rem;
+      max-width: 1350px;
+      margin: 2rem auto;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .result-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem;
+      min-width: 240px;
+      flex: 1 0 auto;
+      color: #2C2C2C;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.05);
+      border: 1px solid rgba(212,160,23,0.2);
+      scroll-snap-align: start;
+    }
+    .student-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .school {
+      color: #5A5A5A;
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+    }
+    .percentage {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #B8860B;
+    }
+    .bar-mini {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 0.35rem 0;
+    }
+    .bar-label {
+      width: 50px;
+      font-size: 0.75rem;
+    }
+    .bar-bg {
+      height: 5px;
+      background: #F0F0F0;
+      flex: 1;
+      border-radius: 4px;
+    }
+    .bar-fill {
+      height: 5px;
+      background: #D4A017;
+      border-radius: 4px;
+    }
+    .more-card {
+      background: #FFFDF5;
+      border: 2px dashed #D4A017;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #B8860B;
+      text-align: center;
+    }
+
+    /* PARALLAX BANNER */
+    .parallax-banner {
+      background: #FEF9E7;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #2C2C2C;
+      padding: 2.5rem 1.5rem;
+    }
+    .subject-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-top: 1.8rem;
+    }
+    .pill {
+      background: rgba(212,160,23,0.1);
+      border: 1px solid #D4A017;
+      padding: 0.4rem 1.1rem;
+      border-radius: 28px;
+      color: #B8860B;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: flex;
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 22px;
+      padding: 1.5rem;
+      flex: 1 1 250px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.03);
+      font-style: italic;
+      border: 1px solid rgba(212,160,23,0.15);
+      font-size: 0.95rem;
+    }
+
+    /* FOOTER CTA */
+    .footer-cta {
+      background: #FFFEF9;
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      border-top: 1px solid rgba(212,160,23,0.2);
+    }
+    .white-card {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 2rem auto;
+      box-shadow: 0 20px 38px rgba(0,0,0,0.05);
+      border: 1px solid rgba(212,160,23,0.2);
+    }
+    .phone-link {
+      color: #B8860B;
+      font-weight: 800;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      text-decoration: none;
+    }
+
+    /* FLOATING WIDGET */
+    .floating-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.7rem;
+    }
+    .main-fab {
+      background: #D4A017;
+      width: 56px;
+      height: 56px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 10px 22px rgba(212,160,23,0.4);
+      animation: pulse 2.2s infinite;
+      cursor: pointer;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(212,160,23,0.55); }
+      70% { box-shadow: 0 0 0 16px rgba(212,160,23,0); }
+      100% { box-shadow: 0 0 0 0 rgba(212,160,23,0); }
+    }
+    .hidden-panel {
+      display: none;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .widget-link {
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .whatsapp-bg { background: #25D366; }
+    .email-bg { background: #B8860B; color: white; }
+
+    @media (max-width: 400px) {
+      .navbar { padding: 0.7rem 1rem; }
+      .logo-text { font-size: 1.6rem; }
+      .hero { padding: 6rem 1rem 2rem; }
+      .btn-group { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 80%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="loader"><div class="loader-text">ILM</div></div>
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <!-- Clean navigation perfectly adjusted for mobile -->
+  <nav class="navbar" id="navbar">
+    <div class="logo">
+      <span class="logo-text">ILM ACADEMY</span>
+      <span class="logo-line"></span>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="yellow-orb"></div>
+      <div class="hero-content">
+        <div class="badge">HOME TUTORING • POWERED BY ILM ACADEMY</div>
+        <h1>Premium Home Tutoring<br><span class="gold-accent">Ahmedabad's Trusted Name</span></h1>
+        <p class="hero-sub">Personalised, one-on-one tutoring for Grades 5–12. Strong concepts, excellent results.</p>
+        <div class="btn-group">
+          <a href="#" class="btn-primary">Book Free Demo</a>
+          <a href="#" class="btn-outline">See 2026 Results</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-section">
+      <div class="marquee-content">
+        <span>VASTRAPUR ✦</span> <span>SATELLITE ✦</span> <span>MANINAGAR ✦</span> <span>THALTEJ ✦</span> <span>PRAHLAD NAGAR ✦</span> <span>NARODA ✦</span> <span>CHANDKHEDA ✦</span> <span>NIKOL ✦</span> <span>MOTERA ✦</span> <span>GOTA ✦</span> <span>AND MORE ✦</span>
+        <span>VASTRAPUR ✦</span> <span>SATELLITE ✦</span> <span>MANINAGAR ✦</span> <span>THALTEJ ✦</span> <span>PRAHLAD NAGAR ✦</span> <span>NARODA ✦</span> <span>CHANDKHEDA ✦</span> <span>NIKOL ✦</span> <span>MOTERA ✦</span> <span>GOTA ✦</span> <span>AND MORE ✦</span>
+      </div>
+    </div>
+
+    <!-- Why ILM -->
+    <section id="why">
+      <h2 class="section-title">The ILM Advantage</h2>
+      <div class="gold-divider"></div>
+      <div class="why-grid">
+        <div class="why-card"><i data-lucide="user-check" class="why-icon"></i><h3>One-on-One Personal Attention</h3></div>
+        <div class="why-card"><i data-lucide="notebook-pen" class="why-icon"></i><h3>Custom Study Notes for Each Student</h3></div>
+        <div class="why-card"><i data-lucide="calendar-clock" class="why-icon"></i><h3>Weekend Doubt-Solving Sessions</h3></div>
+        <div class="why-card"><i data-lucide="sun-moon" class="why-icon"></i><h3>Flexible Morning & Evening Timings</h3></div>
+        <div class="why-card gold-highlight"><i data-lucide="trending-up" class="why-icon"></i><h3>Proven Track Record (50% → 80%)</h3></div>
+        <div class="why-card"><i data-lucide="graduation-cap" class="why-icon"></i><h3>Qualified & Experienced Tutors</h3></div>
+        <div class="why-card"><i data-lucide="home" class="why-icon"></i><h3>Learn in the Comfort of Your Home</h3></div>
+        <div class="why-card"><i data-lucide="bar-chart-3" class="why-icon"></i><h3>Regular Progress Updates to Parents</h3></div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="results-section">
+      <h2 class="section-title">Our Students Excel</h2>
+      <div class="gold-divider"></div>
+      <div class="results-grid">
+        <div class="result-card"><div class="student-name">Ahad Kadri</div><div class="school">Delhi Public School, Bopal</div><div class="percentage"><span class="countup" data-target="80.4">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 92</span><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 81</span><div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 88</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 77</span><div class="bar-bg"><div class="bar-fill" style="width:77%"></div></div></div></div>
+        <div class="result-card"><div class="student-name">Shivani Singh</div><div class="school">Udgam School</div><div class="percentage"><span class="countup" data-target="85.3">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 91</span><div class="bar-bg"><div class="bar-fill" style="width:91%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 85</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 89</span><div class="bar-bg"><div class="bar-fill" style="width:89%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 82</span><div class="bar-bg"><div class="bar-fill" style="width:82%"></div></div></div></div>
+        <div class="result-card"><div class="student-name">Wasim Shaikh</div><div class="school">Tulip School</div><div class="percentage"><span class="countup" data-target="82.8">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 85</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 83</span><div class="bar-bg"><div class="bar-fill" style="width:83%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 89</span><div class="bar-bg"><div class="bar-fill" style="width:89%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 81</span><div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div></div></div>
+        <div class="result-card"><div class="student-name">Priya Mehta</div><div class="school">Shanti Asiatic School</div><div class="percentage"><span class="countup" data-target="88.6">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 94</span><div class="bar-bg"><div class="bar-fill" style="width:94%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 88</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 90</span><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 79</span><div class="bar-bg"><div class="bar-fill" style="width:79%"></div></div></div></div>
+        <div class="result-card"><div class="student-name">Arjun Desai</div><div class="school">Zydus School</div><div class="percentage"><span class="countup" data-target="81.2">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 87</span><div class="bar-bg"><div class="bar-fill" style="width:87%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 79</span><div class="bar-bg"><div class="bar-fill" style="width:79%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 84</span><div class="bar-bg"><div class="bar-fill" style="width:84%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 76</span><div class="bar-bg"><div class="bar-fill" style="width:76%"></div></div></div></div>
+        <div class="result-card more-card">✨ Many More<br>Excellent Results</div>
+      </div>
+    </section>
+
+    <!-- Parallax Banner -->
+    <div class="parallax-banner">
+      <div>
+        <h2 style="font-family:Playfair Display; font-size:clamp(1.8rem, 5vw, 2.5rem);">Meet the Mentor</h2>
+        <h1 style="color:#B8860B; font-size:clamp(2.2rem, 6vw, 3rem);">Naeem Sir</h1>
+        <p style="max-width:600px; margin:0.8rem auto; font-size:0.95rem;">Behind every 90+ in English is a teacher who believed first. Dedicated to strong concepts and excellent results. English Medium Only.</p>
+        <div class="subject-pills">
+          <span class="pill">Mathematics</span> <span class="pill">Science</span> <span class="pill">English</span> <span class="pill">Social Science</span>
+          <span class="pill">Hindi</span> <span class="pill">Gujarati</span> <span class="pill">Computer</span>
+        </div>
+        <p style="margin-top:1.2rem; font-size:0.9rem;">Classes 5th–10th, 11th & 12th Science.</p>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <h2 class="section-title">Parent Voices</h2>
+      <div class="gold-divider"></div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">“My son’s science marks improved from 62% to 89% in one term. The personal attention made all the difference.”<br><strong>— Mrs. Jadeja, Vastrapur</strong></div>
+        <div class="testimonial-card">“My daughter scored 91% in board exams after struggling with math. Truly grateful for the dedicated tutors.”<br><strong>— Mr. Patel, Satellite</strong></div>
+        <div class="testimonial-card">“My child looks forward to tutoring now. That alone is a miracle.”<br><strong>— Mrs. Sharma, Prahlad Nagar</strong></div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section id="contact" class="footer-cta">
+      <h2 style="color:#B8860B; font-family:Playfair Display; font-size:clamp(1.6rem, 4vw, 2rem);">Quality Education, Fair Investment</h2>
+      <p style="margin-top:0.5rem; font-size:0.95rem;">Nothing expensive. Just fair. Call us — you’ll be pleasantly surprised.</p>
+      <div class="white-card">
+        <h3>Book Your Free 1‑Hour Demo</h3>
+        <p>Limited slots available for personalised attention.</p>
+        <a href="tel:919106040016" class="phone-link">📞 9106040016</a>
+        <p style="margin-top:1rem;"><a href="mailto:ask.ilmacademy@gmail.com">ask.ilmacademy@gmail.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Widget -->
+  <div class="floating-widget">
+    <div class="hidden-panel" id="hiddenPanel">
+      <a href="https://wa.me/919106040016?text=I%20want%20to%20know%20more%20about%20ILM%20Academy.%20Please%20send%20details." target="_blank" class="widget-link whatsapp-bg">💬 Chat on WhatsApp</a>
+      <a href="mailto:ask.ilmacademy@gmail.com?subject=Demo%20Class%20Inquiry%20-%20ILM%20Academy&body=Hello%20ILM%20Team%2C%20I%20am%20interested%20in%20the%20free%20demo%20session." target="_blank" class="widget-link email-bg">✉️ Send an Email</a>
+    </div>
+    <div class="main-fab" id="mainFab"><i data-lucide="message-circle" style="width:26px;height:26px;"></i></div>
+  </div>
+
+  <script>
+    (function() {
+      lucide.createIcons();
+      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800);
+
+      const cursor = document.getElementById('customCursor');
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.addEventListener('mousemove', e => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+      }
+
+      window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+      });
+
+      const fab = document.getElementById('mainFab');
+      const panel = document.getElementById('hiddenPanel');
+      fab.addEventListener('click', () => {
+        panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      const counters = document.querySelectorAll('.countup');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            const el = entry.target;
+            const target = parseFloat(el.dataset.target);
+            animateValue(el, 0, target, 1000);
+            el.classList.add('counted');
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(el => observer.observe(el));
+
+      function animateValue(obj, start, end, duration) {
+        let startTime = null;
+        const step = (timestamp) => {
+          if (!startTime) startTime = timestamp;
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          obj.innerHTML = (progress * (end - start) + start).toFixed(1);
+          if (progress < 1) requestAnimationFrame(step);
+          else obj.innerHTML = end.toFixed(1);
+        };
+        requestAnimationFrame(step);
+      }
+
+      const fadeEls = document.querySelectorAll('.why-card, .result-card, .testimonial-card');
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.2 });
+      fadeEls.forEach((el, i) => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = `all 0.5s ease ${i * 0.1}s`;
+        fadeObserver.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
