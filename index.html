@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>ILM Academy • Premium Home Tutoring</title>
-  <!-- Google Fonts -->
+  <title>ILM Academy • Premium Home Tutoring Ahmedabad</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <!-- Lucide Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     * {
@@ -16,46 +14,20 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     html {
       scroll-behavior: smooth;
       background: #FFFEF9;
     }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: #FFFEF9;
       color: #2C2C2C;
-      line-height: 1.5;
+      line-height: 1.6;
       overflow-x: hidden;
       position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-
-    /* Custom cursor for desktop */
-    .custom-cursor {
-      position: fixed;
-      width: 18px;
-      height: 18px;
-      background: #D4A017;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 99999;
-      mix-blend-mode: difference;
-      transform: translate(-50%, -50%);
-      transition: transform 0.06s ease-out;
-      display: none;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      body {
-        cursor: none;
-      }
-      .custom-cursor {
-        display: block;
-      }
-    }
-
-    /* Subtle grain overlay */
     body::after {
       content: "";
       position: fixed;
@@ -69,166 +41,311 @@
       mix-blend-mode: multiply;
       opacity: 0.35;
     }
-
-    /* Page Loader */
-    .page-loader {
-      position: fixed;
-      inset: 0;
-      background: #FFFEF9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100000;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-      border-bottom: 3px solid #E8B830;
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
-    .page-loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+    .section-padding {
+      padding: 5rem 1.5rem;
     }
-    .loader-text {
+    .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      color: #B8860B;
-      letter-spacing: 6px;
-      animation: fadeGold 0.9s ease;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      text-align: center;
+      color: #2C2C2C;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.5px;
     }
-    @keyframes fadeGold {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
+    .section-subtitle {
+      text-align: center;
+      color: #5A5A5A;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-weight: 400;
+    }
+    .gold-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #D4A017, #E8B830, #D4A017);
+      margin: 0.8rem auto 2.5rem;
+      border-radius: 2px;
+    }
+    .gold-text {
+      color: #B8860B;
+    }
+    .gold-bg {
+      background: #D4A017;
     }
 
-    /* NAVIGATION - Clean, perfectly aligned */
+    /* NAVBAR */
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(255, 254, 249, 0.8);
-      backdrop-filter: blur(16px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.9rem 1.5rem;
-      z-index: 1000;
-      transition: all 0.4s ease;
-      border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+      z-index: 10000;
+      background: rgba(255, 254, 249, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 160, 23, 0.15);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+      padding: 0.8rem 0;
     }
     .navbar.scrolled {
       background: rgba(255, 254, 249, 0.96);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      padding: 0.5rem 0;
     }
-    .logo {
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3.5vw, 1.8rem);
+      color: #2C2C2C;
+      letter-spacing: 2px;
+      text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-    .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(1.8rem, 5vw, 2.2rem);
-      color: #2C2C2C;
-      letter-spacing: 2px;
       line-height: 1.2;
-      text-align: center;
-      white-space: nowrap;
     }
-    .logo-line {
-      width: 38px;
-      height: 3px;
+    .nav-logo span {
+      font-size: 0.65rem;
+      letter-spacing: 4px;
+      color: #B8860B;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2C2C2C;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
       background: #D4A017;
-      margin-top: 4px;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #B8860B;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      z-index: 10001;
+    }
+    .hamburger span {
+      width: 26px;
+      height: 2px;
+      background: #2C2C2C;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 75%;
+      max-width: 360px;
+      height: 100vh;
+      background: #FFFEF9;
+      z-index: 9999;
+      flex-direction: column;
+      padding: 6rem 2rem 2rem;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.06);
+      border-left: 1px solid rgba(212,160,23,0.2);
+      gap: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    .mobile-menu a {
+      text-decoration: none;
+      color: #2C2C2C;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(212,160,23,0.1);
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover {
+      color: #B8860B;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 9998;
+    }
+    .overlay.active {
+      display: block;
+    }
+
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
     }
 
     /* HERO */
     .hero {
       min-height: 100vh;
-      background: linear-gradient(180deg, #FFFEF9 0%, #FEF9E7 60%);
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       padding: 7rem 1.5rem 3rem;
+      background: linear-gradient(180deg, #FFFEF9 0%, #FEF9E7 50%, #FFFEF9 100%);
+      overflow: hidden;
     }
-    .yellow-orb {
+    .hero-orb {
       position: absolute;
-      width: 80vw;
-      height: 80vw;
-      max-width: 520px;
-      max-height: 520px;
-      background: #F5D34A;
-      filter: blur(140px);
-      opacity: 0.22;
+      width: 70vw;
+      height: 70vw;
+      max-width: 500px;
+      max-height: 500px;
+      background: radial-gradient(circle, rgba(245,211,74,0.3) 0%, transparent 70%);
+      filter: blur(100px);
       border-radius: 50%;
-      top: 28%;
+      top: 30%;
       left: 50%;
       transform: translate(-50%, -50%);
-      animation: slowOrb 22s infinite alternate;
+      animation: orbFloat 20s infinite alternate ease-in-out;
     }
-    @keyframes slowOrb {
-      0% { transform: translate(-50%, -50%) scale(1); }
-      100% { transform: translate(-50%, -50%) scale(1.2); }
+    @keyframes orbFloat {
+      0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) scale(1.3) rotate(15deg); }
     }
     .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
-      max-width: 100%;
-      width: 100%;
+      max-width: 800px;
+      animation: fadeInUp 1s ease;
     }
-    .badge {
-      display: inline-block;
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       background: rgba(212,160,23,0.08);
-      padding: 0.4rem 1.2rem;
-      border-radius: 30px;
-      font-size: clamp(0.7rem, 2.5vw, 0.85rem);
-      letter-spacing: 2px;
+      padding: 0.5rem 1.5rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(212,160,23,0.4);
+      margin-bottom: 2rem;
+      border: 1px solid rgba(212,160,23,0.3);
       color: #B8860B;
       font-weight: 600;
     }
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      font-size: clamp(2.5rem, 7vw, 4.2rem);
       color: #2C2C2C;
       line-height: 1.2;
-      margin-bottom: 0.8rem;
-      word-break: break-word;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
     }
-    .hero h1 .gold-accent {
+    .hero h1 .highlight {
       color: #B8860B;
+      position: relative;
     }
     .hero-sub {
-      font-size: clamp(1rem, 3.5vw, 1.25rem);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
       color: #5A5A5A;
-      margin: 1rem 0 2rem;
+      margin-bottom: 2rem;
       font-weight: 400;
-      padding: 0 0.5rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: #5A5A5A;
+      font-weight: 500;
+    }
+    .trust-badge i {
+      color: #D4A017;
+      width: 16px;
+      height: 16px;
     }
     .btn-group {
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
-      padding: 0 0.5rem;
     }
-    .btn-primary, .btn-outline {
-      padding: 0.85rem 1.8rem;
-      border-radius: 45px;
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
       font-weight: 600;
       text-decoration: none;
-      transition: all 0.3s ease;
-      letter-spacing: 0.4px;
-      font-size: clamp(0.85rem, 2.5vw, 1rem);
+      letter-spacing: 0.5px;
+      font-size: 0.95rem;
+      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
     .btn-primary {
       background: #D4A017;
-      color: white;
-      box-shadow: 0 14px 26px rgba(212,160,23,0.35);
+      color: #FFFEF9;
+      box-shadow: 0 12px 28px rgba(212,160,23,0.3);
       border: none;
     }
     .btn-outline {
@@ -236,155 +353,172 @@
       color: #B8860B;
       background: transparent;
     }
-    .btn-primary:hover, .btn-outline:hover {
-      transform: scale(1.05);
-      box-shadow: 0 20px 32px rgba(0,0,0,0.1);
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.1);
     }
 
-    /* MARQUEE */
-    .marquee-section {
-      background: #D4A017;
-      padding: 0.8rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    .marquee-content {
-      display: inline-block;
-      animation: marquee 22s linear infinite;
-      font-weight: 700;
-      color: #FFFEF9;
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
-      letter-spacing: 1px;
-    }
-    .marquee-content span {
-      margin: 0 1.2rem;
-    }
-    .marquee-section:hover .marquee-content {
-      animation-play-state: paused;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 4rem 1.5rem;
-    }
-    .section-title {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 6vw, 2.8rem);
-      color: #2C2C2C;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .gold-divider {
-      width: 60px;
-      height: 3px;
-      background: #D4A017;
-      margin: 0.5rem auto 2.5rem;
-    }
-
-    /* WHY ILM GRID */
-    .why-grid {
+    /* STATS */
+    .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.2rem;
-      max-width: 1250px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
       margin: 0 auto;
     }
-    .why-card {
-      background: white;
-      border-radius: 18px;
-      padding: 1.5rem 1.2rem;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
-      border: 1px solid rgba(212,160,23,0.12);
-      transition: all 0.25s;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+    .stat-card {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212,160,23,0.15);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
     }
-    .why-card:hover {
-      border-left: 4px solid #D4A017;
-      transform: translateY(-5px);
-      box-shadow: 0 18px 28px rgba(0,0,0,0.06);
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      border-color: rgba(212,160,23,0.4);
     }
-    .gold-highlight {
-      border: 2px solid #D4A017;
-      background: #FFFDF5;
-    }
-    .why-icon {
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
       color: #B8860B;
-      width: 28px;
-      height: 28px;
+      line-height: 1;
     }
-    .why-card h3 {
-      font-weight: 600;
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
+    .stat-label {
+      color: #5A5A5A;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
     }
 
-    /* RESULTS WALL */
-    .results-section {
-      background: #FFFEF9;
-      padding: 4rem 1rem;
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .results-grid {
+    .feature-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(212,160,23,0.1);
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      transition: all 0.3s ease;
       display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.07);
+      border-left: 4px solid #D4A017;
+    }
+    .feature-icon {
+      color: #B8860B;
+      width: 30px;
+      height: 30px;
+    }
+    .feature-card h3 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #2C2C2C;
+    }
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #5A5A5A;
+      line-height: 1.5;
+    }
+
+    /* BOARD CARDS */
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.2rem;
-      max-width: 1350px;
-      margin: 2rem auto;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .board-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(212,160,23,0.12);
+      border-radius: 18px;
+      padding: 2rem 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .board-card:hover {
+      border-color: #D4A017;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+    }
+    .board-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #2C2C2C;
+    }
+    .board-card p {
+      font-size: 0.8rem;
+      color: #5A5A5A;
+      margin-top: 0.3rem;
+    }
+
+    /* RESULTS SCROLL */
+    .results-scroll {
+      display: flex;
+      gap: 1.5rem;
       overflow-x: auto;
-      padding-bottom: 1rem;
+      padding: 1rem 0.5rem 2rem;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     .result-card {
-      background: white;
-      border-radius: 24px;
-      padding: 1.5rem;
-      min-width: 240px;
-      flex: 1 0 auto;
-      color: #2C2C2C;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.05);
-      border: 1px solid rgba(212,160,23,0.2);
+      background: #FFFFFF;
+      border: 1px solid rgba(212,160,23,0.15);
+      border-radius: 22px;
+      padding: 1.8rem;
+      min-width: 250px;
+      flex-shrink: 0;
       scroll-snap-align: start;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.03);
     }
-    .student-name {
+    .result-name {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
-    .school {
+    .result-school {
+      font-size: 0.8rem;
       color: #5A5A5A;
-      font-size: 0.85rem;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
-    .percentage {
+    .result-pct {
       font-size: 2.4rem;
       font-weight: 800;
       color: #B8860B;
     }
-    .bar-mini {
+    .mini-bar {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
-      margin: 0.35rem 0;
-    }
-    .bar-label {
-      width: 50px;
+      gap: 0.5rem;
+      margin: 0.4rem 0;
       font-size: 0.75rem;
     }
-    .bar-bg {
-      height: 5px;
-      background: #F0F0F0;
-      flex: 1;
-      border-radius: 4px;
-    }
-    .bar-fill {
-      height: 5px;
+    .mini-bar-fill {
+      height: 4px;
       background: #D4A017;
-      border-radius: 4px;
+      border-radius: 3px;
+    }
+    .mini-bar-bg {
+      flex: 1;
+      height: 4px;
+      background: #F0F0F0;
+      border-radius: 3px;
     }
     .more-card {
       background: #FFFDF5;
@@ -392,311 +526,640 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      text-align: center;
       font-weight: 600;
       color: #B8860B;
-      text-align: center;
     }
 
-    /* PARALLAX BANNER */
-    .parallax-banner {
-      background: #FEF9E7;
-      min-height: 400px;
+    /* HOW IT WORKS */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .step-card {
+      position: relative;
+      padding: 2rem 1rem;
+    }
+    .step-number {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #D4A017;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin: 0 auto 1rem;
+    }
+    .step-card h4 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* MENTOR */
+    .mentor-section {
+      background: #FEF9E7;
+      border-radius: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
       text-align: center;
-      color: #2C2C2C;
-      padding: 2.5rem 1.5rem;
     }
     .subject-pills {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.7rem;
-      margin-top: 1.8rem;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
     }
     .pill {
-      background: rgba(212,160,23,0.1);
-      border: 1px solid #D4A017;
-      padding: 0.4rem 1.1rem;
-      border-radius: 28px;
+      background: rgba(212,160,23,0.08);
+      border: 1px solid rgba(212,160,23,0.3);
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
       color: #B8860B;
       font-weight: 500;
-      font-size: 0.9rem;
     }
 
     /* TESTIMONIALS */
     .testimonial-grid {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       max-width: 1100px;
       margin: 0 auto;
-      flex-wrap: wrap;
-      justify-content: center;
     }
     .testimonial-card {
-      background: white;
+      background: #FFFFFF;
+      border: 1px solid rgba(212,160,23,0.1);
       border-radius: 22px;
-      padding: 1.5rem;
-      flex: 1 1 250px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.03);
+      padding: 2rem;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.02);
+      transition: transform 0.3s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+    }
+    .stars {
+      color: #D4A017;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 2px;
+    }
+    .testimonial-text {
       font-style: italic;
-      border: 1px solid rgba(212,160,23,0.15);
-      font-size: 0.95rem;
+      color: #3A3A3A;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: #2C2C2C;
     }
 
-    /* FOOTER CTA */
-    .footer-cta {
-      background: #FFFEF9;
+    /* BECOME TUTOR */
+    .tutor-cta {
+      background: linear-gradient(135deg, #FFFDF5, #FEF9E7);
+      border-radius: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
       text-align: center;
-      padding: 3.5rem 1.5rem;
-      border-top: 1px solid rgba(212,160,23,0.2);
+      border: 1px solid rgba(212,160,23,0.15);
     }
-    .white-card {
-      background: white;
-      border-radius: 28px;
-      padding: 2rem;
-      max-width: 500px;
-      margin: 2rem auto;
-      box-shadow: 0 20px 38px rgba(0,0,0,0.05);
-      border: 1px solid rgba(212,160,23,0.2);
+    .benefits-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
     }
-    .phone-link {
+    .benefits-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 500;
+      color: #3A3A3A;
+    }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(212,160,23,0.15);
+      padding: 1.2rem 0;
+      cursor: pointer;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #2C2C2C;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      color: #5A5A5A;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding-top: 0.8rem;
+    }
+    .faq-icon {
+      transition: transform 0.3s ease;
       color: #B8860B;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* CONTACT CTA */
+    .contact-card {
+      background: #FFFFFF;
+      border-radius: 28px;
+      padding: 2.5rem;
+      max-width: 550px;
+      margin: 2rem auto;
+      box-shadow: 0 20px 44px rgba(0,0,0,0.04);
+      border: 1px solid rgba(212,160,23,0.15);
+      text-align: center;
+    }
+    .contact-phone {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
       font-weight: 800;
-      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: #B8860B;
       text-decoration: none;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #FFFEF9;
+      border-top: 1px solid rgba(212,160,23,0.15);
+      padding: 3rem 1.5rem 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+    }
+    .footer h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2C2C2C;
+    }
+    .footer a, .footer p {
+      font-size: 0.85rem;
+      color: #5A5A5A;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .footer a:hover {
+      color: #B8860B;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+      border-top: 1px solid rgba(212,160,23,0.1);
+      padding-top: 1.5rem;
     }
 
     /* FLOATING WIDGET */
     .floating-widget {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 28px;
+      right: 28px;
       z-index: 9999;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 0.7rem;
+      gap: 0.8rem;
     }
-    .main-fab {
-      background: #D4A017;
+    .fab-main {
       width: 56px;
       height: 56px;
-      border-radius: 30px;
+      border-radius: 28px;
+      background: #D4A017;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      box-shadow: 0 10px 22px rgba(212,160,23,0.4);
-      animation: pulse 2.2s infinite;
+      box-shadow: 0 10px 28px rgba(212,160,23,0.4);
+      border: none;
       cursor: pointer;
+      animation: pulse 2.4s infinite;
+      transition: transform 0.3s;
     }
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(212,160,23,0.55); }
-      70% { box-shadow: 0 0 0 16px rgba(212,160,23,0); }
+      0% { box-shadow: 0 0 0 0 rgba(212,160,23,0.5); }
+      70% { box-shadow: 0 0 0 18px rgba(212,160,23,0); }
       100% { box-shadow: 0 0 0 0 rgba(212,160,23,0); }
     }
-    .hidden-panel {
+    .fab-panel {
       display: none;
       flex-direction: column;
       gap: 0.6rem;
     }
-    .widget-link {
-      padding: 0.6rem 1.2rem;
+    .fab-link {
+      padding: 0.7rem 1.4rem;
       border-radius: 30px;
       color: white;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
+      text-align: center;
     }
-    .whatsapp-bg { background: #25D366; }
-    .email-bg { background: #B8860B; color: white; }
+    .wa-link { background: #25D366; }
+    .em-link { background: #B8860B; }
 
-    @media (max-width: 400px) {
-      .navbar { padding: 0.7rem 1rem; }
-      .logo-text { font-size: 1.6rem; }
-      .hero { padding: 6rem 1rem 2rem; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      .section-padding { padding: 3.5rem 1rem; }
       .btn-group { flex-direction: column; align-items: center; }
-      .btn-primary, .btn-outline { width: 80%; text-align: center; }
+      .btn { width: 80%; justify-content: center; }
+      .floating-widget { bottom: 16px; right: 16px; }
     }
   </style>
 </head>
 <body>
-  <div class="page-loader" id="loader"><div class="loader-text">ILM</div></div>
-  <div class="custom-cursor" id="customCursor"></div>
 
-  <!-- Clean navigation perfectly adjusted for mobile -->
   <nav class="navbar" id="navbar">
-    <div class="logo">
-      <span class="logo-text">ILM ACADEMY</span>
-      <span class="logo-line"></span>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">ILM<span>ACADEMY</span></a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#why">Why ILM</a></li>
+        <li><a href="#subjects">Subjects</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#tutor">Become a Tutor</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
+  <div class="overlay" id="overlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#why">Why ILM</a>
+    <a href="#subjects">Subjects</a>
+    <a href="#results">Results</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#tutor">Become a Tutor</a>
+    <a href="#contact">Contact</a>
+  </div>
+
   <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="yellow-orb"></div>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-orb"></div>
       <div class="hero-content">
-        <div class="badge">HOME TUTORING • POWERED BY ILM ACADEMY</div>
-        <h1>Premium Home Tutoring<br><span class="gold-accent">Ahmedabad's Trusted Name</span></h1>
-        <p class="hero-sub">Personalised, one-on-one tutoring for Grades 5–12. Strong concepts, excellent results.</p>
+        <div class="hero-badge">✦ Ahmedabad's Premium Tutoring ✦</div>
+        <h1>Premium One-to-One <span class="highlight">Home Tutoring</span> in Ahmedabad</h1>
+        <p class="hero-sub">Helping students from Classes 5–12 build strong concepts, confidence, and academic excellence through personalised learning.</p>
+        <div class="trust-badges">
+          <span class="trust-badge"><i data-lucide="check-circle"></i> Verified Tutors</span>
+          <span class="trust-badge"><i data-lucide="check-circle"></i> CBSE • ICSE • GSEB</span>
+          <span class="trust-badge"><i data-lucide="check-circle"></i> Home & Online Classes</span>
+          <span class="trust-badge"><i data-lucide="check-circle"></i> Free Demo Session</span>
+        </div>
         <div class="btn-group">
-          <a href="#" class="btn-primary">Book Free Demo</a>
-          <a href="#" class="btn-outline">See 2026 Results</a>
+          <a href="#contact" class="btn btn-primary"><i data-lucide="calendar-check"></i> Book Free Demo</a>
+          <a href="#results" class="btn btn-outline"><i data-lucide="bar-chart-3"></i> Explore Results</a>
         </div>
       </div>
     </section>
 
-    <!-- Marquee -->
-    <div class="marquee-section">
-      <div class="marquee-content">
-        <span>VASTRAPUR ✦</span> <span>SATELLITE ✦</span> <span>MANINAGAR ✦</span> <span>THALTEJ ✦</span> <span>PRAHLAD NAGAR ✦</span> <span>NARODA ✦</span> <span>CHANDKHEDA ✦</span> <span>NIKOL ✦</span> <span>MOTERA ✦</span> <span>GOTA ✦</span> <span>AND MORE ✦</span>
-        <span>VASTRAPUR ✦</span> <span>SATELLITE ✦</span> <span>MANINAGAR ✦</span> <span>THALTEJ ✦</span> <span>PRAHLAD NAGAR ✦</span> <span>NARODA ✦</span> <span>CHANDKHEDA ✦</span> <span>NIKOL ✦</span> <span>MOTERA ✦</span> <span>GOTA ✦</span> <span>AND MORE ✦</span>
-      </div>
-    </div>
-
-    <!-- Why ILM -->
-    <section id="why">
-      <h2 class="section-title">The ILM Advantage</h2>
-      <div class="gold-divider"></div>
-      <div class="why-grid">
-        <div class="why-card"><i data-lucide="user-check" class="why-icon"></i><h3>One-on-One Personal Attention</h3></div>
-        <div class="why-card"><i data-lucide="notebook-pen" class="why-icon"></i><h3>Custom Study Notes for Each Student</h3></div>
-        <div class="why-card"><i data-lucide="calendar-clock" class="why-icon"></i><h3>Weekend Doubt-Solving Sessions</h3></div>
-        <div class="why-card"><i data-lucide="sun-moon" class="why-icon"></i><h3>Flexible Morning & Evening Timings</h3></div>
-        <div class="why-card gold-highlight"><i data-lucide="trending-up" class="why-icon"></i><h3>Proven Track Record (50% → 80%)</h3></div>
-        <div class="why-card"><i data-lucide="graduation-cap" class="why-icon"></i><h3>Qualified & Experienced Tutors</h3></div>
-        <div class="why-card"><i data-lucide="home" class="why-icon"></i><h3>Learn in the Comfort of Your Home</h3></div>
-        <div class="why-card"><i data-lucide="bar-chart-3" class="why-icon"></i><h3>Regular Progress Updates to Parents</h3></div>
-      </div>
-    </section>
-
-    <!-- Results -->
-    <section id="results" class="results-section">
-      <h2 class="section-title">Our Students Excel</h2>
-      <div class="gold-divider"></div>
-      <div class="results-grid">
-        <div class="result-card"><div class="student-name">Ahad Kadri</div><div class="school">Delhi Public School, Bopal</div><div class="percentage"><span class="countup" data-target="80.4">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 92</span><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 81</span><div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 88</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 77</span><div class="bar-bg"><div class="bar-fill" style="width:77%"></div></div></div></div>
-        <div class="result-card"><div class="student-name">Shivani Singh</div><div class="school">Udgam School</div><div class="percentage"><span class="countup" data-target="85.3">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 91</span><div class="bar-bg"><div class="bar-fill" style="width:91%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 85</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 89</span><div class="bar-bg"><div class="bar-fill" style="width:89%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 82</span><div class="bar-bg"><div class="bar-fill" style="width:82%"></div></div></div></div>
-        <div class="result-card"><div class="student-name">Wasim Shaikh</div><div class="school">Tulip School</div><div class="percentage"><span class="countup" data-target="82.8">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 85</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 83</span><div class="bar-bg"><div class="bar-fill" style="width:83%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 89</span><div class="bar-bg"><div class="bar-fill" style="width:89%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 81</span><div class="bar-bg"><div class="bar-fill" style="width:81%"></div></div></div></div>
-        <div class="result-card"><div class="student-name">Priya Mehta</div><div class="school">Shanti Asiatic School</div><div class="percentage"><span class="countup" data-target="88.6">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 94</span><div class="bar-bg"><div class="bar-fill" style="width:94%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 88</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 90</span><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 79</span><div class="bar-bg"><div class="bar-fill" style="width:79%"></div></div></div></div>
-        <div class="result-card"><div class="student-name">Arjun Desai</div><div class="school">Zydus School</div><div class="percentage"><span class="countup" data-target="81.2">0</span>%</div><div class="bar-mini"><span class="bar-label">Eng 87</span><div class="bar-bg"><div class="bar-fill" style="width:87%"></div></div></div><div class="bar-mini"><span class="bar-label">Sci 79</span><div class="bar-bg"><div class="bar-fill" style="width:79%"></div></div></div><div class="bar-mini"><span class="bar-label">SS 84</span><div class="bar-bg"><div class="bar-fill" style="width:84%"></div></div></div><div class="bar-mini"><span class="bar-label">Math 76</span><div class="bar-bg"><div class="bar-fill" style="width:76%"></div></div></div></div>
-        <div class="result-card more-card">✨ Many More<br>Excellent Results</div>
-      </div>
-    </section>
-
-    <!-- Parallax Banner -->
-    <div class="parallax-banner">
-      <div>
-        <h2 style="font-family:Playfair Display; font-size:clamp(1.8rem, 5vw, 2.5rem);">Meet the Mentor</h2>
-        <h1 style="color:#B8860B; font-size:clamp(2.2rem, 6vw, 3rem);">Naeem Sir</h1>
-        <p style="max-width:600px; margin:0.8rem auto; font-size:0.95rem;">Behind every 90+ in English is a teacher who believed first. Dedicated to strong concepts and excellent results. English Medium Only.</p>
-        <div class="subject-pills">
-          <span class="pill">Mathematics</span> <span class="pill">Science</span> <span class="pill">English</span> <span class="pill">Social Science</span>
-          <span class="pill">Hindi</span> <span class="pill">Gujarati</span> <span class="pill">Computer</span>
+    <!-- TRUST STATS -->
+    <section class="section-padding">
+      <div class="container">
+        <h2 class="section-title">Trusted by <span class="gold-text">Hundreds</span> of Families</h2>
+        <div class="gold-divider"></div>
+        <div class="stats-grid reveal">
+          <div class="stat-card"><div class="stat-number"><span class="countup" data-target="500">0</span>+</div><div class="stat-label">Students Mentored</div></div>
+          <div class="stat-card"><div class="stat-number"><span class="countup" data-target="50">0</span>+</div><div class="stat-label">Trusted Tutors</div></div>
+          <div class="stat-card"><div class="stat-number"><span class="countup" data-target="10">0</span>+</div><div class="stat-label">Ahmedabad Areas</div></div>
+          <div class="stat-card"><div class="stat-number">5–12</div><div class="stat-label">Classes & Science Stream</div></div>
         </div>
-        <p style="margin-top:1.2rem; font-size:0.9rem;">Classes 5th–10th, 11th & 12th Science.</p>
-      </div>
-    </div>
-
-    <!-- Testimonials -->
-    <section id="testimonials">
-      <h2 class="section-title">Parent Voices</h2>
-      <div class="gold-divider"></div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">“My son’s science marks improved from 62% to 89% in one term. The personal attention made all the difference.”<br><strong>— Mrs. Jadeja, Vastrapur</strong></div>
-        <div class="testimonial-card">“My daughter scored 91% in board exams after struggling with math. Truly grateful for the dedicated tutors.”<br><strong>— Mr. Patel, Satellite</strong></div>
-        <div class="testimonial-card">“My child looks forward to tutoring now. That alone is a miracle.”<br><strong>— Mrs. Sharma, Prahlad Nagar</strong></div>
       </div>
     </section>
 
-    <!-- Footer CTA -->
-    <section id="contact" class="footer-cta">
-      <h2 style="color:#B8860B; font-family:Playfair Display; font-size:clamp(1.6rem, 4vw, 2rem);">Quality Education, Fair Investment</h2>
-      <p style="margin-top:0.5rem; font-size:0.95rem;">Nothing expensive. Just fair. Call us — you’ll be pleasantly surprised.</p>
-      <div class="white-card">
-        <h3>Book Your Free 1‑Hour Demo</h3>
-        <p>Limited slots available for personalised attention.</p>
-        <a href="tel:919106040016" class="phone-link">📞 9106040016</a>
-        <p style="margin-top:1rem;"><a href="mailto:ask.ilmacademy@gmail.com">ask.ilmacademy@gmail.com</a></p>
+    <!-- WHY ILM -->
+    <section class="section-padding" id="why" style="background:#FFFEF9;">
+      <div class="container">
+        <h2 class="section-title">The ILM <span class="gold-text">Advantage</span></h2>
+        <div class="gold-divider"></div>
+        <div class="cards-grid reveal">
+          <div class="feature-card"><i data-lucide="user-check" class="feature-icon"></i><h3>One-on-One Personal Attention</h3><p>Every student gets dedicated focus tailored to their learning pace and style.</p></div>
+          <div class="feature-card"><i data-lucide="notebook-pen" class="feature-icon"></i><h3>Custom Study Notes</h3><p>Handcrafted notes designed specifically for each student's curriculum.</p></div>
+          <div class="feature-card"><i data-lucide="calendar-clock" class="feature-icon"></i><h3>Weekend Doubt Solving</h3><p>Extra weekend sessions to ensure no doubt remains unresolved.</p></div>
+          <div class="feature-card"><i data-lucide="sun-moon" class="feature-icon"></i><h3>Flexible Timings</h3><p>Morning and evening slots to fit your family's schedule seamlessly.</p></div>
+          <div class="feature-card"><i data-lucide="trending-up" class="feature-icon"></i><h3>Proven Academic Growth</h3><p>Consistent improvement from 50% to 80%+ in board results.</p></div>
+          <div class="feature-card"><i data-lucide="graduation-cap" class="feature-icon"></i><h3>Experienced Tutors</h3><p>Qualified educators with deep subject expertise and mentoring skills.</p></div>
+          <div class="feature-card"><i data-lucide="home" class="feature-icon"></i><h3>Learn from Home</h3><p>Comfortable, safe, and focused learning environment at your doorstep.</p></div>
+          <div class="feature-card"><i data-lucide="bar-chart-3" class="feature-icon"></i><h3>Parent Progress Updates</h3><p>Regular detailed reports keep parents informed of every milestone.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOARDS -->
+    <section class="section-padding" style="background:#FEF9E7;">
+      <div class="container">
+        <h2 class="section-title">Boards We <span class="gold-text">Cover</span></h2>
+        <p class="section-subtitle">Supporting multiple academic boards with personalised learning strategies.</p>
+        <div class="board-grid reveal">
+          <div class="board-card"><i data-lucide="book-open" style="color:#B8860B;width:32px;height:32px;margin-bottom:0.5rem;"></i><h4>CBSE</h4><p>Comprehensive NCERT-based coaching</p></div>
+          <div class="board-card"><i data-lucide="book-marked" style="color:#B8860B;width:32px;height:32px;margin-bottom:0.5rem;"></i><h4>ICSE</h4><p>In-depth concept clarity & project work</p></div>
+          <div class="board-card"><i data-lucide="book-text" style="color:#B8860B;width:32px;height:32px;margin-bottom:0.5rem;"></i><h4>GSEB</h4><p>Gujarat board expert guidance</p></div>
+          <div class="board-card"><i data-lucide="languages" style="color:#B8860B;width:32px;height:32px;margin-bottom:0.5rem;"></i><h4>English Medium</h4><p>All subjects in English</p></div>
+          <div class="board-card"><i data-lucide="scroll-text" style="color:#B8860B;width:32px;height:32px;margin-bottom:0.5rem;"></i><h4>Gujarati Medium</h4><p>Local language comfort</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBJECTS -->
+    <section class="section-padding" id="subjects">
+      <div class="container">
+        <h2 class="section-title">Subjects We <span class="gold-text">Offer</span></h2>
+        <div class="gold-divider"></div>
+        <div class="cards-grid reveal">
+          <div class="feature-card"><i data-lucide="calculator" class="feature-icon"></i><h3>Mathematics</h3><p>From basics to advanced problem-solving for board excellence.</p></div>
+          <div class="feature-card"><i data-lucide="flask-conical" class="feature-icon"></i><h3>Science</h3><p>Conceptual clarity with practical understanding for young minds.</p></div>
+          <div class="feature-card"><i data-lucide="type" class="feature-icon"></i><h3>English</h3><p>Grammar, literature, and writing skills for academic confidence.</p></div>
+          <div class="feature-card"><i data-lucide="globe" class="feature-icon"></i><h3>Social Science</h3><p>History, geography, and civics made engaging and memorable.</p></div>
+          <div class="feature-card"><i data-lucide="atom" class="feature-icon"></i><h3>Physics</h3><p>Numericals and theory balanced for 11th & 12th Science.</p></div>
+          <div class="feature-card"><i data-lucide="beaker" class="feature-icon"></i><h3>Chemistry</h3><p>Reactions, equations, and organic chemistry simplified.</p></div>
+          <div class="feature-card"><i data-lucide="microscope" class="feature-icon"></i><h3>Biology</h3><p>Diagrams, terminology, and concepts for NEET aspirants.</p></div>
+          <div class="feature-card"><i data-lucide="monitor" class="feature-icon"></i><h3>Computer</h3><p>Programming basics and theory for school curriculum.</p></div>
+          <div class="feature-card"><i data-lucide="message-circle" class="feature-icon"></i><h3>Hindi</h3><p>Literature and grammar with cultural depth.</p></div>
+          <div class="feature-card"><i data-lucide="scroll" class="feature-icon"></i><h3>Gujarati</h3><p>Mother tongue mastery for GSEB students.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="section-padding" id="results" style="background:#FFFEF9;">
+      <div class="container">
+        <h2 class="section-title">Student <span class="gold-text">Results</span> Showcase</h2>
+        <div class="gold-divider"></div>
+        <div class="results-scroll reveal">
+          <div class="result-card"><div class="result-name">Ahad Kadri</div><div class="result-school">Delhi Public School, Bopal</div><div class="result-pct"><span class="countup" data-target="80.4">0</span>%</div><div class="mini-bar"><span>Eng 92</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:92%"></div></div></div><div class="mini-bar"><span>Sci 81</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:81%"></div></div></div><div class="mini-bar"><span>SS 88</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:88%"></div></div></div><div class="mini-bar"><span>Math 77</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:77%"></div></div></div></div>
+          <div class="result-card"><div class="result-name">Shivani Singh</div><div class="result-school">Udgam School</div><div class="result-pct"><span class="countup" data-target="85.3">0</span>%</div><div class="mini-bar"><span>Eng 91</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:91%"></div></div></div><div class="mini-bar"><span>Sci 85</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:85%"></div></div></div><div class="mini-bar"><span>SS 89</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:89%"></div></div></div><div class="mini-bar"><span>Math 82</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:82%"></div></div></div></div>
+          <div class="result-card"><div class="result-name">Wasim Shaikh</div><div class="result-school">Tulip School</div><div class="result-pct"><span class="countup" data-target="82.8">0</span>%</div><div class="mini-bar"><span>Eng 85</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:85%"></div></div></div><div class="mini-bar"><span>Sci 83</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:83%"></div></div></div><div class="mini-bar"><span>SS 89</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:89%"></div></div></div><div class="mini-bar"><span>Math 81</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:81%"></div></div></div></div>
+          <div class="result-card"><div class="result-name">Priya Mehta</div><div class="result-school">Shanti Asiatic School</div><div class="result-pct"><span class="countup" data-target="88.6">0</span>%</div><div class="mini-bar"><span>Eng 94</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:94%"></div></div></div><div class="mini-bar"><span>Sci 88</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:88%"></div></div></div><div class="mini-bar"><span>SS 90</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:90%"></div></div></div><div class="mini-bar"><span>Math 79</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:79%"></div></div></div></div>
+          <div class="result-card"><div class="result-name">Arjun Desai</div><div class="result-school">Zydus School</div><div class="result-pct"><span class="countup" data-target="81.2">0</span>%</div><div class="mini-bar"><span>Eng 87</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:87%"></div></div></div><div class="mini-bar"><span>Sci 79</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:79%"></div></div></div><div class="mini-bar"><span>SS 84</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:84%"></div></div></div><div class="mini-bar"><span>Math 76</span><div class="mini-bar-bg"><div class="mini-bar-fill" style="width:76%"></div></div></div></div>
+          <div class="result-card more-card">✨ Many More<br>Excellent Results</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section-padding" style="background:#FEF9E7;">
+      <div class="container">
+        <h2 class="section-title">How ILM <span class="gold-text">Academy</span> Works</h2>
+        <div class="gold-divider"></div>
+        <div class="steps-grid reveal">
+          <div class="step-card"><div class="step-number">1</div><i data-lucide="phone-call" style="color:#B8860B;width:28px;height:28px;margin-bottom:0.5rem;"></i><h4>Contact Us</h4><p>Reach out via call, WhatsApp, or email. Share your requirements.</p></div>
+          <div class="step-card"><div class="step-number">2</div><i data-lucide="users" style="color:#B8860B;width:28px;height:28px;margin-bottom:0.5rem;"></i><h4>Get Matched</h4><p>We pair you with the perfect tutor based on subject, board, and location.</p></div>
+          <div class="step-card"><div class="step-number">3</div><i data-lucide="book-open" style="color:#B8860B;width:28px;height:28px;margin-bottom:0.5rem;"></i><h4>Start Learning</h4><p>Begin your personalised journey with a free demo session at home.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENTOR -->
+    <section class="section-padding" id="mentor">
+      <div class="container">
+        <div class="mentor-section reveal">
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2rem);">Meet the Mentor</h2>
+          <h1 style="color:#B8860B;font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,2.8rem);margin:0.5rem 0;">Naeem Sir</h1>
+          <p style="max-width:600px;margin:0.8rem auto;color:#5A5A5A;">Dedicated to building strong concepts, confidence, and academic excellence through personalised teaching. English Medium Only.</p>
+          <div class="subject-pills">
+            <span class="pill">Mathematics</span><span class="pill">Science</span><span class="pill">English</span><span class="pill">Social Science</span>
+            <span class="pill">Hindi</span><span class="pill">Gujarati</span><span class="pill">Computer</span><span class="pill">Physics</span><span class="pill">Chemistry</span><span class="pill">Biology</span>
+          </div>
+          <p style="margin-top:1.2rem;font-size:0.9rem;color:#5A5A5A;">Classes 5th–10th, 11th & 12th Science.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section-padding" id="testimonials">
+      <div class="container">
+        <h2 class="section-title">Parent <span class="gold-text">Voices</span></h2>
+        <p class="section-subtitle">What parents say about ILM Academy</p>
+        <div class="testimonial-grid reveal">
+          <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"My son's science marks improved from 62% to 89% in one term. The personal attention made all the difference."</p><div class="testimonial-author">— Mrs. Jadeja, Vastrapur</div></div>
+          <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"My daughter scored 91% in board exams after struggling with math. Truly grateful for the dedicated tutors."</p><div class="testimonial-author">— Mr. Patel, Satellite</div></div>
+          <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"My child looks forward to tutoring now. That alone is a miracle. Highly recommend ILM Academy."</p><div class="testimonial-author">— Mrs. Sharma, Prahlad Nagar</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BECOME TUTOR -->
+    <section class="section-padding" id="tutor">
+      <div class="container">
+        <div class="tutor-cta reveal">
+          <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2rem);">Become an <span class="gold-text">ILM Tutor</span></h2>
+          <p style="color:#5A5A5A;margin-top:0.5rem;">Join Ahmedabad's most trusted premium tutoring network.</p>
+          <ul class="benefits-list">
+            <li><i data-lucide="clock" style="color:#D4A017;width:18px;height:18px;"></i> Flexible schedules</li>
+            <li><i data-lucide="banknote" style="color:#D4A017;width:18px;height:18px;"></i> Competitive earnings</li>
+            <li><i data-lucide="map-pin" style="color:#D4A017;width:18px;height:18px;"></i> Nearby student allocation</li>
+            <li><i data-lucide="briefcase" style="color:#D4A017;width:18px;height:18px;"></i> Professional environment</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary"><i data-lucide="send"></i> Apply as Tutor</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-padding" id="faq">
+      <div class="container">
+        <h2 class="section-title">Frequently <span class="gold-text">Asked</span> Questions</h2>
+        <div class="gold-divider"></div>
+        <div class="faq-container reveal">
+          <div class="faq-item"><div class="faq-question">Do you provide home tutoring? <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i></div><div class="faq-answer">Yes, we specialize in premium one-to-one home tutoring across Ahmedabad. Our tutors come to your doorstep for personalized sessions.</div></div>
+          <div class="faq-item"><div class="faq-question">Which boards do you teach? <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i></div><div class="faq-answer">We cover CBSE, ICSE, and GSEB boards for students from Classes 5 to 12, in both English and Gujarati medium.</div></div>
+          <div class="faq-item"><div class="faq-question">Are demo classes free? <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i></div><div class="faq-answer">Absolutely. We offer a free 1-hour demo session so you can experience our teaching quality before committing.</div></div>
+          <div class="faq-item"><div class="faq-question">Which areas do you cover? <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i></div><div class="faq-answer">We serve Vastrapur, Satellite, Maninagar, Thaltej, Prahlad Nagar, Naroda, Chandkheda, Nikol, Motera, Gota, and more areas in Ahmedabad.</div></div>
+          <div class="faq-item"><div class="faq-question">Are online classes available? <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i></div><div class="faq-answer">Yes, we offer both home tutoring and online classes depending on your preference and convenience.</div></div>
+          <div class="faq-item"><div class="faq-question">Do you provide female tutors? <i data-lucide="plus" class="faq-icon" style="width:20px;height:20px;"></i></div><div class="faq-answer">Yes, we have qualified female tutors available. Please mention your preference when contacting us.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section-padding" id="contact" style="background:#FEF9E7;">
+      <div class="container">
+        <h2 class="section-title">Get in <span class="gold-text">Touch</span></h2>
+        <div class="gold-divider"></div>
+        <div class="contact-card reveal">
+          <h3 style="font-family:'Playfair Display',serif;margin-bottom:0.5rem;">Book Your Free 1‑Hour Demo</h3>
+          <p style="color:#5A5A5A;margin-bottom:1.5rem;">Limited slots available for personalised attention.</p>
+          <a href="tel:919106040016" class="contact-phone">📞 9106040016</a>
+          <p style="margin-top:1rem;"><a href="mailto:ask.ilmacademy@gmail.com" style="color:#B8860B;text-decoration:none;font-weight:500;">ask.ilmacademy@gmail.com</a></p>
+          <a href="https://wa.me/919106040016?text=I%20want%20to%20know%20more%20about%20ILM%20Academy." target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:1.5rem;"><i data-lucide="message-circle"></i> Chat on WhatsApp</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Floating Widget -->
-  <div class="floating-widget">
-    <div class="hidden-panel" id="hiddenPanel">
-      <a href="https://wa.me/919106040016?text=I%20want%20to%20know%20more%20about%20ILM%20Academy.%20Please%20send%20details." target="_blank" class="widget-link whatsapp-bg">💬 Chat on WhatsApp</a>
-      <a href="mailto:ask.ilmacademy@gmail.com?subject=Demo%20Class%20Inquiry%20-%20ILM%20Academy&body=Hello%20ILM%20Team%2C%20I%20am%20interested%20in%20the%20free%20demo%20session." target="_blank" class="widget-link email-bg">✉️ Send an Email</a>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>ILM Academy</h4>
+        <p>Premium home tutoring in Ahmedabad. Building strong concepts since 2016.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a><a href="#why">Why ILM</a><a href="#results">Results</a><a href="#testimonials">Testimonials</a>
+      </div>
+      <div>
+        <h4>Areas</h4>
+        <p>Vastrapur • Satellite • Maninagar • Thaltej • Prahlad Nagar • Naroda • Chandkheda • Nikol • Motera • Gota</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:919106040016">📞 9106040016</a>
+        <a href="mailto:ask.ilmacademy@gmail.com">✉️ ask.ilmacademy@gmail.com</a>
+      </div>
     </div>
-    <div class="main-fab" id="mainFab"><i data-lucide="message-circle" style="width:26px;height:26px;"></i></div>
+    <div class="footer-bottom">© 2026 ILM Academy • Ahmedabad, Gujarat. All rights reserved.</div>
+  </footer>
+
+  <!-- FLOATING WIDGET -->
+  <div class="floating-widget">
+    <div class="fab-panel" id="fabPanel">
+      <a href="https://wa.me/919106040016?text=I%20want%20to%20know%20more%20about%20ILM%20Academy." target="_blank" rel="noopener" class="fab-link wa-link">💬 WhatsApp</a>
+      <a href="mailto:ask.ilmacademy@gmail.com" class="fab-link em-link">✉️ Email</a>
+    </div>
+    <button class="fab-main" id="fabMain" aria-label="Contact options"><i data-lucide="message-circle" style="width:24px;height:24px;"></i></button>
   </div>
 
   <script>
     (function() {
       lucide.createIcons();
-      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 800);
 
-      const cursor = document.getElementById('customCursor');
-      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        document.addEventListener('mousemove', e => {
-          cursor.style.left = e.clientX + 'px';
-          cursor.style.top = e.clientY + 'px';
-        });
-      }
-
+      // NAVBAR SCROLL
+      const navbar = document.getElementById('navbar');
       window.addEventListener('scroll', () => {
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
       });
 
-      const fab = document.getElementById('mainFab');
-      const panel = document.getElementById('hiddenPanel');
-      fab.addEventListener('click', () => {
+      // MOBILE MENU
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
+      function toggleMenu() {
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+      document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', toggleMenu);
+      });
+
+      // FAQ ACCORDION
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+          item.classList.toggle('active');
+        });
+      });
+
+      // FLOATING WIDGET
+      const fab = document.getElementById('fabMain');
+      const panel = document.getElementById('fabPanel');
+      fab.addEventListener('click', (e) => {
+        e.stopPropagation();
         panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
       });
+      document.addEventListener('click', (e) => {
+        if (!fab.contains(e.target) && !panel.contains(e.target)) {
+          panel.style.display = 'none';
+        }
+      });
 
+      // COUNTER ANIMATION
       const counters = document.querySelectorAll('.countup');
-      const observer = new IntersectionObserver((entries) => {
+      const countObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
             const el = entry.target;
-            const target = parseFloat(el.dataset.target);
-            animateValue(el, 0, target, 1000);
+            const target = parseInt(el.dataset.target);
+            animateCount(el, 0, target, 1200);
             el.classList.add('counted');
           }
         });
-      }, { threshold: 0.5 });
-      counters.forEach(el => observer.observe(el));
+      }, { threshold: 0.6 });
+      counters.forEach(el => countObserver.observe(el));
 
-      function animateValue(obj, start, end, duration) {
+      function animateCount(obj, start, end, duration) {
         let startTime = null;
         const step = (timestamp) => {
           if (!startTime) startTime = timestamp;
           const progress = Math.min((timestamp - startTime) / duration, 1);
-          obj.innerHTML = (progress * (end - start) + start).toFixed(1);
+          obj.textContent = Math.floor(progress * (end - start) + start);
           if (progress < 1) requestAnimationFrame(step);
-          else obj.innerHTML = end.toFixed(1);
+          else obj.textContent = end;
         };
         requestAnimationFrame(step);
       }
 
-      const fadeEls = document.querySelectorAll('.why-card, .result-card, .testimonial-card');
-      const fadeObserver = new IntersectionObserver((entries) => {
+      // SCROLL REVEAL
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('visible');
           }
         });
-      }, { threshold: 0.2 });
-      fadeEls.forEach((el, i) => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `all 0.5s ease ${i * 0.1}s`;
-        fadeObserver.observe(el);
+      }, { threshold: 0.15 });
+      revealEls.forEach(el => revealObserver.observe(el));
+
+      // SMOOTH NAV LINK SCROLL
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#') return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
       });
     })();
   </script>
